@@ -1,6 +1,6 @@
 {
   "name": "@hungonspace/nodash",
-  "version": "0.1.1-build1",
+  "version": "0.3.0",
   "description": "Js/Ts Utiltities for you to use",
   "main": "index.js",
   "publishConfig": {
