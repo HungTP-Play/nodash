@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import { isPalindrome } from './palindrome';
+import { stringIsPalindrome, stringLongestPalindromeSubstring } from './palindrome';
 
-// ------ isPalindrome ------
-describe('isPalindrome', () => {
+// ------ Palindrome ------
+describe('Palindrome', () => {
     const cases = <{
         name: string,
         input: string,
@@ -29,13 +29,61 @@ describe('isPalindrome', () => {
                 expected: false
             }
         ];
-        
+
     test('Test isPalindrome', () => {
         cases.forEach(({ name, input, expected }) => {
             test(name, () => {
-                const result = isPalindrome(input);
+                const result = stringIsPalindrome(input);
                 expect(result).toBe(expected);
             });
+        });
+    });
+
+    const casesLongestPalindromeSubstring = <{
+        name: string,
+        input: string,
+        expected: string | string[],
+    }[]>[
+            {
+                name: "Test empty string",
+                input: "",
+                expected: "",
+            },
+            {
+                name: "Test single char",
+                input: "a",
+                expected: "a",
+            },
+            {
+                name: "Test string is palindrome",
+                input: "aba",
+                expected: "aba",
+            },
+            {
+                name: "Test string is non-palindrome",
+                input: "abc",
+                expected: "",
+            },
+            {
+                name: "Test string is palindrome with non-palindrome",
+                input: "abac",
+                expected: "aba",
+            },
+            {
+                name: "Test string is non-palindrome with palindrome",
+                input: "aacabac",
+                expected: "cabac",
+            }
+        ];
+
+    casesLongestPalindromeSubstring.forEach((c) => {
+        test(`Test longestPalindromeSubstring $case:${c.name}`, () => {
+            const actual = stringLongestPalindromeSubstring(c.input);
+            if (Array.isArray(c.expected)) {
+                expect(actual).toEqual(expect.arrayContaining(c.expected));
+            } else {
+                expect(actual).toBe(c.expected);
+            }
         });
     });
 });

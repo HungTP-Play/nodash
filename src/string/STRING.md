@@ -13,7 +13,11 @@
     - [Trim](#trim)
     - [TrimLeft](#trimleft)
     - [TrimRight](#trimright)
-  - [IsPalindrome](#ispalindrome)
+  - [Palindrome](#palindrome)
+    - [IsPalindrome](#ispalindrome)
+    - [LongestPalindromeSubstring](#longestpalindromesubstring)
+  - [Subsequence](#subsequence)
+    - [LongestCommonSubsequence](#longestcommonsubsequence)
 
 ## String Utils
 
@@ -338,7 +342,9 @@ export function stringTrimRight(s: string, trimPattern = " "): string {
 }
 ```
 
-## IsPalindrome
+## Palindrome
+
+### IsPalindrome
 
 Check if a string is a palindrome.
 
@@ -354,5 +360,103 @@ export function isPalindrome(str: string): boolean {
   }
 
   return true;
+}
+```
+
+### LongestPalindromeSubstring
+
+Find the longest palindrome substring in a string.
+
+```ts
+/**
+ * Find the longest palindrome substring in a string.
+ * 
+ * Example:
+ * 
+ * ```ts
+ * const longestPalindrome = longestPalindromeSubstring('babad'); // bab
+ * ```
+ * @param s 
+ * @returns 
+ */
+export function longestPalindromeSubstring(s: string): string {
+    const n = s.length;
+    const dp = new Array(n).fill(0).map(() => new Array(n).fill(false));
+    let longestPalindrome = '';
+
+    for (let i = 0; i < n; i++) {
+        dp[i][i] = true;
+        longestPalindrome = s[i];
+    }
+
+    for (let i = n - 1; i >= 0; i--) {
+        for (let j = i + 1; j < n; j++) {
+            if (s[i] === s[j]) {
+                if (j - i === 1 || dp[i + 1][j - 1]) {
+                    dp[i][j] = true;
+                    if (j - i + 1 > longestPalindrome.length) {
+                        longestPalindrome = s.substring(i, j + 1);
+                    }
+                }
+            }
+        }
+    }
+
+    return longestPalindrome;
+}
+```
+
+## Subsequence
+
+### LongestCommonSubsequence
+
+Find the longest common subsequence between two strings.
+
+```ts
+/**
+ * Find the longest common subsequence between two strings.
+ * 
+ * Example:
+ * 
+ * ```ts
+ * const lcs = longestCommonSubsequence('AGGTAB', 'GXTXAYB'); // GTAB
+ * ```
+ * @param s1 
+ * @param s2 
+ * @returns 
+ */
+
+export function longestCommonSubsequence(s1: string, s2: string): string {
+    const m = s1.length;
+    const n = s2.length;
+    const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (s1[i - 1] === s2[j - 1]) {
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+
+    let i = m;
+    let j = n;
+    let lcs = '';
+
+    while (i > 0 && j > 0) {
+        if (s1[i - 1] === s2[j - 1]) {
+            lcs = s1[i - 1] + lcs;
+            i--;
+            j--;
+        } else if (dp[i - 1][j] > dp[i][j - 1]) {
+            i--;
+        } else {
+            j--;
+        }
+    }
+
+    return lcs;
 }
 ```
