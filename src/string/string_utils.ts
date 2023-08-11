@@ -131,3 +131,67 @@ export function stringUpperCamelCase(str: string): string {
     // Join words and return
     return words.join('');
 }
+
+/**
+ * Return a string in kebab case format
+ * 
+ * Example:
+ * 
+ * ```ts
+ * const kebabCaseString = stringToKebabCase('hello world'); // hello-world
+ * const kebabCaseString2 = stringToKebabCase('hello-world'); // hello-world
+ * const kebabCaseString3 = stringToKebabCase('hello_world'); // hello-world
+ * const kebabCaseString4 = stringToKebabCase('helloWorld'); // hello-world
+ * const kebabCaseString5 = stringToKebabCase('HelloWorld'); // hello-world
+ * const kebabCaseString6 = stringToKebabCase('HELLO WORLD'); // hello-world
+ * ```
+ * @param s 
+ * @returns 
+ */
+export function stringToKebabCase(s: string): string {
+    // Replace all special characters with space
+    s = s.replace(/[^a-zA-Z0-9 ]/g, ' ');
+
+    // Replace all space characters with single space
+    s = s.replace(/\s\s+/g, ' ');
+
+    // Split string by space and convert to lowercase
+    const words = s.split(' ').map(word => word.toLowerCase());
+
+    // Join words with hyphen and return
+    return words.join('-');
+}
+
+/**
+ * Return a string in title case format
+ * 
+ * Example:
+ * 
+ * ```ts
+ * const titleCaseString = stringToTitleCase('hello world'); // Hello World
+ * const titleCaseString2 = stringToTitleCase('hello-world'); // Hello World
+ * const titleCaseString3 = stringToTitleCase('hello_world'); // Hello World
+ * const titleCaseString4 = stringToTitleCase('helloWorld'); // Hello World
+ * const titleCaseString5 = stringToTitleCase('HelloWorld'); // Hello World
+ * const titleCaseString6 = stringToTitleCase('HELLO WORLD'); // Hello World
+ * ```
+ * @param s 
+ */
+export function stringToTitleCase(s: string): string {
+    // Replace all special characters with space
+    s = s.replace(/[^a-zA-Z0-9 ]/g, ' ');
+
+    // Replace all space characters with single space
+    s = s.replace(/\s\s+/g, ' ');
+
+    // Split string by space and convert to lowercase
+    const words = s.split(' ').map(word => word.toLowerCase());
+
+    // Convert first letter of each word to uppercase
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].substring(1);
+    }
+
+    // Join words and return
+    return words.join(' ');
+}
