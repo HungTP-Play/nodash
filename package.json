@@ -1,18 +1,16 @@
 {
   "name": "nodash",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "0.1.0",
+  "description": "Js/Ts Utiltities for you to use",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "test": "vitest --watch"
+    "build": "tsc --build",
+    "test": "vitest"
   },
+  "author": "HungTP-Play",
+  "license": "ISC",
   "devDependencies": {
-    "@vitest/coverage-v8": "^0.34.1",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
+    "typescript": "^5.1.6",
     "vitest": "^0.34.1"
   }
 }
