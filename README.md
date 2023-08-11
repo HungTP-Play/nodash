@@ -11,3 +11,7 @@ Repository: [NoDash](https://github.com/HungTP-Play/nodash)
 ## String
 
 README: [String](./src/string/STRING.md)
+
+## Array
+
+README: [Array](./src/array/ARRAY.md)
