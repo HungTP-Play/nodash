@@ -12,9 +12,15 @@
  * @param s 
  * @returns 
  */
-export function isPalindrome(s:string):boolean {
-    if (s.length <= 1) return true;
-    if (s[0] !== s[s.length - 1]) return false;
-
-    return isPalindrome(s.slice(1, s.length - 1));
-}
+export function isPalindrome(str: string): boolean {
+    const len = str.length;
+    const mid = Math.floor(len / 2);
+  
+    for (let i = 0; i < mid; i++) {
+      if (str[i] !== str[len - 1 - i]) {
+        return false;
+      }
+    }
+  
+    return true;
+  }
