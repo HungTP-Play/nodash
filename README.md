@@ -7,3 +7,7 @@ You can simple copy the code and paste it in your project or you can install it 
 The code is written in TypeScript and you can use it in your TypeScript projects.
 
 Repository: [NoDash](https://github.com/HungTP-Play/nodash)
+
+## String
+
+README: [String](./src/string/STRING.md)

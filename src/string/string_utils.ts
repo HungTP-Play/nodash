@@ -1,22 +1,18 @@
-# STRING
-
-## String Utils
-
-### StringReverse
-
-Reverse a string.
-
-```ts
+/**
+ * Return a reversed string
+ * 
+ * Example:
+ * 
+ * ```typescript
+ * const revString = stringReverse('hello'); // olleh
+ * ```
+ * @param str 
+ * @returns 
+ */
 export function stringReverse(str: string): string {
-  return str.split('').reverse().join('');
+    return str.split('').reverse().join('');
 }
-```
 
-### WordReverse
-
-Reverse words in a string.
-
-```ts
 /**
  * Return a string with words in reverse order
  * @param str 
@@ -27,32 +23,15 @@ export function wordsReverse(str: string, splitBy = " "): string {
     return str.split(splitBy).reverse().join(splitBy);
 }
 
-```
-
-### MirrorString
-
-Return a mirror string of the given string.
-
-```ts
 /**
- * Return a mirror string of the given string
- * 
- * Example:
- * 
- * ```ts
- * const mirrorString = mirrorString('hello world'); // dlrow olleh
- * ```
+ * Return a string that show in mirror reflection
  * @param str 
- * @returns 
  */
 export function mirrorString(str: string): string {
     return stringReverse(str);
 }
-```
 
-### StringToCamelCase
 
-```ts
 /**
  * Return a string in camel case format
  * 
@@ -86,11 +65,8 @@ export function stringToCamelCase(str: string): string {
     // Join words and return
     return words.join('');
 }
-```
 
-### StringToSnakeCase
 
-```ts
 /**
  * Return a string in snake case format
  * 
@@ -120,11 +96,6 @@ export function stringToSnakeCase(str: string): string {
     // Join words with hyphen and return
     return words.join('_');
 }
-```
-
-### StringToUpperCamelCase
-
-```ts
 
 /**
  * Return a string in upper camel case format
@@ -160,23 +131,3 @@ export function stringUpperCamelCase(str: string): string {
     // Join words and return
     return words.join('');
 }
-```
-
-## IsPalindrome
-
-Check if a string is a palindrome.
-
-```ts
-export function isPalindrome(str: string): boolean {
-  const len = str.length;
-  const mid = Math.floor(len / 2);
-
-  for (let i = 0; i < mid; i++) {
-    if (str[i] !== str[len - 1 - i]) {
-      return false;
-    }
-  }
-
-  return true;
-}
-```
