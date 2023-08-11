@@ -195,3 +195,74 @@ export function stringToTitleCase(s: string): string {
     // Join words and return
     return words.join(' ');
 }
+
+/**
+ * Return a trimmed string
+ * 
+ * Example:
+ * 
+ * ```ts
+ * const trimmedString = stringTrim(' hello world '); // hello world
+ * const trimmedString2 = stringTrim(' hello world ', ' '); // hello world
+ * const trimmedString3 = stringTrim('__hello world__', '_'); // hello world
+ * const trimmedString4 = stringTrim('22__hello world__1122 ', '12_'); // hello world
+ * @param s 
+ * @param trimPattern is a string containing characters to be trimmed
+ * @returns 
+ */
+export function stringTrim(s: string, trimPattern = " "): string {
+    const toTrimChars = trimPattern.split('');
+    let trimmedString = s;
+    for (let i = 0; i < toTrimChars.length; i++) {
+        trimmedString = trimmedString.replace(new RegExp(`^${toTrimChars[i]}+|${toTrimChars[i]}+$`, 'g'), '');
+    }
+    return trimmedString;
+}
+
+/**
+ * Return a trimmed string from left
+ * 
+ * Example:
+ * 
+ * ```ts
+ * const trimmedString = stringTrimLeft(' hello world '); // hello world
+ * const trimmedString2 = stringTrimLeft(' hello world ', ' '); // hello world
+ * const trimmedString3 = stringTrimLeft('__hello world__', '_'); // hello world__
+ * const trimmedString4 = stringTrimLeft('22__hello world__1122 ', '12_'); // hello world__1122
+ * ```
+ * @param s 
+ * @param trimPattern 
+ * @returns 
+ */
+export function stringTrimLeft(s: string, trimPattern = " "): string {
+    const toTrimChars = trimPattern.split('');
+    let trimmedString = s;
+    for (let i = 0; i < toTrimChars.length; i++) {
+        trimmedString = trimmedString.replace(new RegExp(`^${toTrimChars[i]}+`, 'g'), '');
+    }
+    return trimmedString;
+}
+
+/**
+ * Return a trimmed string from right
+ * 
+ * Example:
+ * 
+ * ```ts
+ * const trimmedString = stringTrimRight(' hello world '); // hello world
+ * const trimmedString2 = stringTrimRight(' hello world ', ' '); // hello world
+ * const trimmedString3 = stringTrimRight('__hello world__', '_'); // __hello world
+ * const trimmedString4 = stringTrimRight('22__hello world__1122 ', '12_'); // 22__hello world
+ * ```
+ * @param s 
+ * @param trimPattern 
+ * @returns 
+ */
+export function stringTrimRight(s: string, trimPattern = " "): string {
+    const toTrimChars = trimPattern.split('');
+    let trimmedString = s;
+    for (let i = 0; i < toTrimChars.length; i++) {
+        trimmedString = trimmedString.replace(new RegExp(`${toTrimChars[i]}+$`, 'g'), '');
+    }
+    return trimmedString;
+}
